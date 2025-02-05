@@ -74,6 +74,18 @@
             margin-top: 20px;
             cursor: pointer;
             display: none;
+            background: transparent;
+            color: red;
+            border: 2px solid red;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Added shadow */
+        }
+
+        #nextBtn:hover {
+            background-color: red;
+            color: white;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* Darker shadow on hover */
         }
 
         #container {
@@ -107,6 +119,18 @@
             padding: 12px 24px;
             margin: 15px;
             cursor: pointer;
+            background: transparent;
+            color: red;
+            border: 2px solid red;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Added shadow */
+        }
+
+        button:hover {
+            background-color: red;
+            color: white;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* Darker shadow on hover */
         }
 
         #noBtn {
@@ -127,7 +151,7 @@
             transform: translateY(-50%);
         }
 
-        /* Video styling (Hidden by default, uniform sizing) */
+        /* Video styling (Hidden by default, UNIform sizing) */
         .video-container {
             width: 370px; /* Same size for all videos */
             height: 286px;
@@ -183,12 +207,12 @@
             <button id="yesBtn" onclick="showMessage()">Yes</button>
             <button id="noBtn" onclick="moveNo()">No</button>
         </div>
-        <p id="message" style="display:none; font-size: 45px; color: red;">Yayyyy, thought so! I love you my little babyyyy! ❤️</p>
+        <p id="message" style="display:none; font-size: 40px; color: red;">Yayyyy, thought so! I love you my little babyyyy! ❤️</p>
 
         <!-- JPEG Photo (Only on the right side when clicking "No") -->
         <img id="photo" src="" alt="Random Cat Picture">
 
-        <!-- MP4 Videos (Hidden by default, appear when clicking "Yes") -->
+        <!-- MP4 Videos (Hidden by default, appear when clicking "Yes" Type shi) -->
         <video id="video1" class="video-container" loop autoplay muted>
             <source src="Val1.mp4" type="video/mp4">
         </video>
@@ -196,7 +220,7 @@
             <source src="Kiss.mp4" type="video/mp4">
         </video>
         <video id="stitchVideo" class="video-container" loop autoplay muted>
-            <source src="Stitch.mp4" type="video/mp4"> <!-- Replaced Funny.mp4 -->
+            <source src="Stitch.mp4" type="video/mp4"> 
         </video>
         <video id="video2" class="video-container" loop autoplay muted>
             <source src="Val2.mp4" type="video/mp4">
@@ -205,7 +229,7 @@
             <source src="Flower.mp4" type="video/mp4">
         </video>
         <video id="catLuvVideo" class="video-container" loop autoplay muted>
-            <source src="CatLuv.mp4" type="video/mp4"> <!-- Replaced Heart.mp4 -->
+            <source src="CatLuv.mp4" type="video/mp4"> 
         </video>
     </div>
 
@@ -298,3 +322,4 @@
     </script>
 </body>
 </html>
+
