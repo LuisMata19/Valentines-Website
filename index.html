@@ -9,35 +9,10 @@
             font-family: 'Jenna Sue';
             src: url('JennaSue.ttf') format('truetype');
         }
-        @keyframes floatingHearts {
-    0% { transform: translateY(0); opacity: 1; }
-    50% { opacity: 0.8; }
-    100% { transform: translateY(-100vh); opacity: 0; }
-}
-
-.heart {
-    position: absolute;
-    bottom: 0;
-    font-size: 24px;
-    color: red;
-    opacity: 0;
-    animation: floatingHearts 4s linear infinite;
-}
-@keyframes glow {
-    0% { box-shadow: 0 0 5px red; }
-    50% { box-shadow: 0 0 20px pink; }
-    100% { box-shadow: 0 0 5px red; }
-}
-
-#yesBtn:hover {
-    animation: glow 1s infinite alternate;
-    background-color: #ffcccc;
-}
-
         
         body {
             background-color: pink;
-            text-align: left;
+            text-align: center;
             font-family: 'Jenna Sue', cursive;
             height: 100vh;
             margin: 0;
@@ -48,104 +23,56 @@
             overflow: hidden;
             position: relative;
         }
-        #initialPage {
-            position: absolute;
-            width: 100vw;
-            height: 100vh;
-            background-color: pink;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            transition: opacity 1s ease-in-out;
-        }
-        #initialPage img {
-            width: 500px;
-            height: auto;
-        }
-        #nextBtn {
-            font-size: 24px;
-            padding: 12px 24px;
-            margin-top: 20px;
-            cursor: pointer;
-            display: none;
-        }
+        
         #container {
-            width: 80%;
+            width: 90%;
             max-width: 800px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.6);
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 20px;
-            display: none;
-            position: relative;
-            text-align: left;
+            text-align: center;
         }
+        
         #valentineMessage {
-            font-size: 45px;
+            font-size: 24px;
             color: rgb(205, 57, 55);
-            white-space: pre-wrap;
             opacity: 0;
             transition: opacity 2s ease-in-out;
-            max-width: 80%;
-            margin-left: 20px;
         }
+        
         #yesNoButtons {
-            margin-top: 30px;
+            margin-top: 20px;
             display: none;
         }
+        
         button {
-            font-size: 24px;
-            padding: 12px 24px;
-            margin: 15px;
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
             cursor: pointer;
         }
+        
         #noBtn {
             position: absolute;
-            max-width: 90vw;
-            max-height: 90vh;
         }
-        /* JPEG images only on the right */
-        #photo {
-            margin-top: 20px;
-            width: 400px;
+        
+        /* Responsive Design */
+        img, video {
+            max-width: 100%;
             height: auto;
-            display: none;
-            position: absolute;
-            right: -450px;
-            top: 50%;
-            transform: translateY(-50%);
+            display: block;
+            margin: 10px auto;
         }
-
-        /* Video styling (Hidden by default, uniform sizing) */
-        .video-container {
-            width: 370px; /* Same size for all videos */
-            height: 286px;
-            display: none;
-            position: absolute;
-        }
-
-        /* First row (Val1 and Val2) aligned to the top of the container */
-        #video1, #video2 {
-            top: 0;
-        }
-
-        /* Second row (Kiss and Flower) directly below Val1 and Val2 */
-        #kissVideo, #flowerVideo {
-            top: 320px; /* Spacing below Val1 and Val2 */
-        }
-
-        /* Third row (Stitch under Kiss, CatLuv under Flower) */
-        #stitchVideo, #catLuvVideo {
-            top: 640px; /* Same spacing below Kiss and Flower */
-        }
-
-        /* Positioning: Left (Val2, Flower, CatLuv), Right (Val1, Kiss, Stitch) */
-        #video1, #kissVideo, #stitchVideo {
-            right: -450px;
-        }
-
-        #video2, #flowerVideo, #catLuvVideo {
-            left: -450px;
+        
+        @media (max-width: 600px) {
+            #container {
+                width: 95%;
+                padding: 15px;
+            }
+            button {
+                font-size: 18px;
+                padding: 8px 16px;
+            }
         }
     </style>
 </head>
@@ -154,146 +81,55 @@
         <source src="Nocturne.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-
+    
     <div id="initialPage">
         <img src="InitialPage.jpg" alt="Front of the card">
         <button id="nextBtn" onclick="openCard()">Next</button>
     </div>
     
     <div id="container">
-        <p id="valentineMessage">Dear Jiaxin,
-
-From the moment we met, you’ve been the best part of my days. No matter what happens—whether we’re laughing together, working through things, or just sitting in comfortable silence—being able to call you mine means the world to me. Every day with you is a gift, and I wouldn’t trade it for anything.
-
-That being said, Jiaxin, I can’t think of anything more special than sharing this day with you. Will you be my Valentine?
-
-</p>
+        <p id="valentineMessage">Dear Jiaxin, will you be my Valentine? ❤️</p>
         <div id="yesNoButtons">
             <button id="yesBtn" onclick="showMessage()">Yes</button>
             <button id="noBtn" onclick="moveNo()">No</button>
         </div>
-        <p id="message" style="display:none; font-size: 45px; color: red;">Yayyyy, thought so! I love you my little babyyyy! ❤️</p>
-
-        <!-- JPEG Photo (Only on the right side when clicking "No") -->
-        <img id="photo" src="" alt="Random Cat Picture">
-
-        <!-- MP4 Videos (Hidden by default, appear when clicking "Yes") -->
-        <video id="video1" class="video-container" loop autoplay muted>
-            <source src="Val1.mp4" type="video/mp4">
-        </video>
-        <video id="kissVideo" class="video-container" loop autoplay muted>
-            <source src="Kiss.mp4" type="video/mp4">
-        </video>
-        <video id="stitchVideo" class="video-container" loop autoplay muted>
-            <source src="Stitch.mp4" type="video/mp4"> <!-- Replaced Funny.mp4 -->
-        </video>
-        <video id="video2" class="video-container" loop autoplay muted>
-            <source src="Val2.mp4" type="video/mp4">
-        </video>
-        <video id="flowerVideo" class="video-container" loop autoplay muted>
-            <source src="Flower.mp4" type="video/mp4">
-        </video>
-        <video id="catLuvVideo" class="video-container" loop autoplay muted>
-            <source src="CatLuv.mp4" type="video/mp4"> <!-- Replaced Heart.mp4 -->
-        </video>
+        <p id="message" style="display:none; font-size: 24px; color: red;">Yayyyy, I love you! ❤️</p>
     </div>
 
     <script>
-        window.onload = function() {
+        function openCard() {
+            document.getElementById("initialPage").style.display = "none";
+            document.getElementById("container").style.display = "block";
+            playBackgroundMusic();
             setTimeout(() => {
-                document.getElementById("nextBtn").style.display = "block";
-            }, 2000);
-        };
-
-        let noClickCount = 0;
-        const images = [
-            "catVal01.jpeg", "catVal02.jpeg", "catVal02A.jpg", "catVal03.jpg", "catVal04.jpg", "catVal05.jpg",
-            "catVal06.jpg", "catVal07.jpeg", "catVal08.jpg", "catVal09.jpg", "catVal10.jpg", "catVal11.jpg",
-            "catVal12.jpg", "catVal13.jpg", "catVal14.jpg", "catVal15.jpg"
-        ];
-        function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random speed
-    document.body.appendChild(heart);
-    
-    setTimeout(() => {
-        heart.remove();
-    }, 4000);
-}
-
-setInterval(createHeart, 500);
-
-function moveNo() {
-    const noBtn = document.getElementById("noBtn");
-    const container = document.getElementById("container");
-    const maxX = container.offsetWidth - noBtn.clientWidth;
-    const maxY = container.offsetHeight - noBtn.clientHeight;
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
-
-    noBtn.style.left = `${x}px`;
-    noBtn.style.top = `${y}px`;
-
-    // Shrink the button by reducing font size and padding
-    let currentSize = parseFloat(window.getComputedStyle(noBtn).fontSize);
-    if (currentSize > 8) { // Prevent shrinking too much
-        noBtn.style.fontSize = (currentSize - 2) + "px";
-        noBtn.style.padding = "8px 16px";
-    }
-
-    // Show the photo when clicking "No"
-    const photo = document.getElementById("photo");
-    photo.src = images[noClickCount % images.length];
-    photo.style.display = "block";
-
-    noClickCount++;
-}
-
-
+                document.getElementById("valentineMessage").style.opacity = "1";
+                setTimeout(() => {
+                    document.getElementById("yesNoButtons").style.display = "block";
+                }, 2000);
+            }, 500);
+        }
+        
+        function playBackgroundMusic() {
+            var audio = document.getElementById('backgroundMusic');
+            audio.volume = 0.5;
+            audio.play();
+        }
+        
         function showMessage() {
             document.getElementById("message").style.display = "block";
-            document.getElementById("photo").style.display = "none";
-
-            // Show all MP4 videos
-            document.querySelectorAll('.video-container').forEach(video => {
-                video.style.display = "block";
-                video.load();
-            });
         }
-        function playBackgroundMusic() {
-    var audio = document.getElementById('backgroundMusic');
-    audio.volume = 0.5; // Set volume to 50% (adjust as needed)
-    audio.play();
-}
-
-function playBackgroundMusic() {
-    var audio = document.getElementById('backgroundMusic');
-    audio.volume = 0.5; // Set volume to 50% (adjust as needed)
-    audio.play();
-}
-
-function openCard() {
-    document.getElementById("initialPage").style.opacity = "0";
-    setTimeout(() => {
-        document.getElementById("initialPage").style.display = "none";
-        document.getElementById("container").style.display = "block";
         
-        playBackgroundMusic(); // 🎶 Start the music here
-        
-        setTimeout(() => {
-            document.getElementById("valentineMessage").style.opacity = "1";
-            document.getElementById("valentineMessage").style.transition = "opacity 3s ease-in-out";
-
-            setTimeout(() => {
-                document.getElementById("yesNoButtons").style.display = "block";
-            }, 2000);
-        }, 500);
-    }, 1000);
-}
-
+        function moveNo() {
+            const noBtn = document.getElementById("noBtn");
+            const maxX = window.innerWidth - noBtn.clientWidth;
+            const maxY = window.innerHeight - noBtn.clientHeight;
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
     </script>
+</body>
+</html>
 </body>
 </html>
