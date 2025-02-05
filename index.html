@@ -25,30 +25,30 @@
         }
         
         #container {
-            width: 90%;
-            max-width: 800px;
-            padding: 20px;
+            width: 80%;
+            max-width: 1000px;
+            padding: 40px;
             background: rgba(255, 255, 255, 0.8);
             border-radius: 20px;
             text-align: center;
         }
         
         #valentineMessage {
-            font-size: 24px;
+            font-size: 32px;
             color: rgb(205, 57, 55);
             opacity: 0;
             transition: opacity 2s ease-in-out;
         }
         
         #yesNoButtons {
-            margin-top: 20px;
+            margin-top: 30px;
             display: none;
         }
         
         button {
-            font-size: 20px;
-            padding: 10px 20px;
-            margin: 10px;
+            font-size: 24px;
+            padding: 12px 24px;
+            margin: 15px;
             cursor: pointer;
         }
         
@@ -56,22 +56,26 @@
             position: absolute;
         }
         
-        /* Responsive Design */
         img, video {
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 10px auto;
+            margin: 20px auto;
         }
         
-        @media (max-width: 600px) {
+        .video-container {
+            width: 640px;
+            height: 360px;
+        }
+        
+        @media (max-width: 1200px) {
             #container {
-                width: 95%;
-                padding: 15px;
+                width: 90%;
+                padding: 30px;
             }
-            button {
-                font-size: 18px;
-                padding: 8px 16px;
+            .video-container {
+                width: 480px;
+                height: 270px;
             }
         }
     </style>
@@ -93,7 +97,14 @@
             <button id="yesBtn" onclick="showMessage()">Yes</button>
             <button id="noBtn" onclick="moveNo()">No</button>
         </div>
-        <p id="message" style="display:none; font-size: 24px; color: red;">Yayyyy, I love you! ❤️</p>
+        <p id="message" style="display:none; font-size: 28px; color: red;">Yayyyy, I love you! ❤️</p>
+        
+        <video id="video1" class="video-container" loop autoplay muted>
+            <source src="Val1.mp4" type="video/mp4">
+        </video>
+        <video id="video2" class="video-container" loop autoplay muted>
+            <source src="Val2.mp4" type="video/mp4">
+        </video>
     </div>
 
     <script>
@@ -131,5 +142,4 @@
     </script>
 </body>
 </html>
-</body>
-</html>
+
