@@ -9,34 +9,36 @@
             font-family: 'Jenna Sue';
             src: url('JennaSue.ttf') format('truetype');
         }
+
         @keyframes floatingHearts {
-    0% { transform: translateY(0); opacity: 1; }
-    50% { opacity: 0.8; }
-    100% { transform: translateY(-100vh); opacity: 0; }
-}
+            0% { transform: translateY(0); opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
 
-.heart {
-    position: absolute;
-    bottom: 0;
-    font-size: 24px;
-    color: red;
-    opacity: 0;
-    animation: floatingHearts 4s linear infinite;
-}
-@keyframes glow {
-    0% { box-shadow: 0 0 5px red; }
-    50% { box-shadow: 0 0 20px pink; }
-    100% { box-shadow: 0 0 5px red; }
-}
+        .heart {
+            position: absolute;
+            bottom: 0;
+            font-size: 24px;
+            color: red;
+            opacity: 0;
+            animation: floatingHearts 4s linear infinite;
+        }
 
-#yesBtn:hover {
-    animation: glow 1s infinite alternate;
-    background-color: #ffcccc;
-}
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px red; }
+            50% { box-shadow: 0 0 20px pink; }
+            100% { box-shadow: 0 0 5px red; }
+        }
 
-        
+        #yesBtn:hover {
+            animation: glow 1s infinite alternate;
+            background-color: #ffcccc;
+        }
+
+        /* Soft Gradient Background */
         body {
-            background-color: pink;
+            background: linear-gradient(to bottom right, #ffb6c1, #f8d7db); /* Light pink to soft peach */
             text-align: left;
             font-family: 'Jenna Sue', cursive;
             height: 100vh;
@@ -48,6 +50,7 @@
             overflow: hidden;
             position: relative;
         }
+
         #initialPage {
             position: absolute;
             width: 100vw;
@@ -59,10 +62,12 @@
             flex-direction: column;
             transition: opacity 1s ease-in-out;
         }
+
         #initialPage img {
             width: 500px;
             height: auto;
         }
+
         #nextBtn {
             font-size: 24px;
             padding: 12px 24px;
@@ -70,6 +75,7 @@
             cursor: pointer;
             display: none;
         }
+
         #container {
             width: 80%;
             max-width: 800px;
@@ -80,6 +86,7 @@
             position: relative;
             text-align: left;
         }
+
         #valentineMessage {
             font-size: 45px;
             color: rgb(205, 57, 55);
@@ -89,21 +96,25 @@
             max-width: 80%;
             margin-left: 20px;
         }
+
         #yesNoButtons {
             margin-top: 30px;
             display: none;
         }
+
         button {
             font-size: 24px;
             padding: 12px 24px;
             margin: 15px;
             cursor: pointer;
         }
+
         #noBtn {
             position: absolute;
             max-width: 90vw;
             max-height: 90vh;
         }
+
         /* JPEG images only on the right */
         #photo {
             margin-top: 20px;
@@ -159,15 +170,15 @@
         <img src="InitialPage.jpg" alt="Front of the card">
         <button id="nextBtn" onclick="openCard()">Next</button>
     </div>
-    
+
     <div id="container">
         <p id="valentineMessage">Dear Jiaxin,
 
-From the moment we met, you’ve been the best part of my days. No matter what happens—whether we’re laughing together, working through things, or just sitting in comfortable silence—being able to call you mine means the world to me. Every day with you is a gift, and I wouldn’t trade it for anything.
+        From the moment we met, you’ve been the best part of my days. No matter what happens—whether we’re laughing together, working through things, or just sitting in comfortable silence—being able to call you mine means the world to me. Every day with you is a gift, and I wouldn’t trade it for anything.
 
-That being said, Jiaxin, I can’t think of anything more special than sharing this day with you. Will you be my Valentine?
+        That being said, Jiaxin, I can’t think of anything more special than sharing this day with you. Will you be my Valentine?
 
-</p>
+        </p>
         <div id="yesNoButtons">
             <button id="yesBtn" onclick="showMessage()">Yes</button>
             <button id="noBtn" onclick="moveNo()">No</button>
@@ -211,47 +222,47 @@ That being said, Jiaxin, I can’t think of anything more special than sharing t
             "catVal06.jpg", "catVal07.jpeg", "catVal08.jpg", "catVal09.jpg", "catVal10.jpg", "catVal11.jpg",
             "catVal12.jpg", "catVal13.jpg", "catVal14.jpg", "catVal15.jpg"
         ];
+
         function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random speed
-    document.body.appendChild(heart);
-    
-    setTimeout(() => {
-        heart.remove();
-    }, 4000);
-}
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random speed
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
 
-setInterval(createHeart, 500);
+        setInterval(createHeart, 500);
 
-function moveNo() {
-    const noBtn = document.getElementById("noBtn");
-    const container = document.getElementById("container");
-    const maxX = container.offsetWidth - noBtn.clientWidth;
-    const maxY = container.offsetHeight - noBtn.clientHeight;
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+        function moveNo() {
+            const noBtn = document.getElementById("noBtn");
+            const container = document.getElementById("container");
+            const maxX = container.offsetWidth - noBtn.clientWidth;
+            const maxY = container.offsetHeight - noBtn.clientHeight;
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
 
-    noBtn.style.left = `${x}px`;
-    noBtn.style.top = `${y}px`;
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
 
-    // Shrink the button by reducing font size and padding
-    let currentSize = parseFloat(window.getComputedStyle(noBtn).fontSize);
-    if (currentSize > 8) { // Prevent shrinking too much
-        noBtn.style.fontSize = (currentSize - 2) + "px";
-        noBtn.style.padding = "8px 16px";
-    }
+            // Shrink the button by reducing font size and padding
+            let currentSize = parseFloat(window.getComputedStyle(noBtn).fontSize);
+            if (currentSize > 8) { // Prevent shrinking too much
+                noBtn.style.fontSize = (currentSize - 2) + "px";
+                noBtn.style.padding = "8px 16px";
+            }
 
-    // Show the photo when clicking "No"
-    const photo = document.getElementById("photo");
-    photo.src = images[noClickCount % images.length];
-    photo.style.display = "block";
+            // Show the photo when clicking "No"
+            const photo = document.getElementById("photo");
+            photo.src = images[noClickCount % images.length];
+            photo.style.display = "block";
 
-    noClickCount++;
-}
-
+            noClickCount++;
+        }
 
         function showMessage() {
             document.getElementById("message").style.display = "block";
@@ -263,37 +274,27 @@ function moveNo() {
                 video.load();
             });
         }
+
         function playBackgroundMusic() {
-    var audio = document.getElementById('backgroundMusic');
-    audio.volume = 0.5; // Set volume to 50% (adjust as needed)
-    audio.play();
-}
+            var audio = document.getElementById('backgroundMusic');
+            audio.volume = 0.5; // Set volume to 50% (adjust as needed)
+            audio.play();
+        }
 
-function playBackgroundMusic() {
-    var audio = document.getElementById('backgroundMusic');
-    audio.volume = 0.5; // Set volume to 50% (adjust as needed)
-    audio.play();
-}
-
-function openCard() {
-    document.getElementById("initialPage").style.opacity = "0";
-    setTimeout(() => {
-        document.getElementById("initialPage").style.display = "none";
-        document.getElementById("container").style.display = "block";
-        
-        playBackgroundMusic(); // 🎶 Start the music here
-        
-        setTimeout(() => {
-            document.getElementById("valentineMessage").style.opacity = "1";
-            document.getElementById("valentineMessage").style.transition = "opacity 3s ease-in-out";
-
+        function openCard() {
+            document.getElementById("initialPage").style.opacity = "0"; // Fade out the initial page
             setTimeout(() => {
-                document.getElementById("yesNoButtons").style.display = "block";
-            }, 2000);
-        }, 500);
-    }, 1000);
-}
-
+                document.getElementById("initialPage").style.display = "none";
+                document.getElementById("container").style.display = "block"; // Show the main container
+                playBackgroundMusic();
+                setTimeout(() => {
+                    document.getElementById("valentineMessage").style.opacity = "1";
+                    setTimeout(() => {
+                        document.getElementById("yesNoButtons").style.display = "block";
+                    }, 2000);
+                }, 500);
+            }, 1000);
+        }
     </script>
 </body>
 </html>
