@@ -68,6 +68,19 @@
             height: auto;
         }
 
+        #headerMessage {
+    font-size: 100px;
+    color: red;
+    position: absolute;
+    top: 50px;
+    text-align: center;
+    width: 100%;
+    font-family: 'Jenna Sue', cursive;
+    transition: opacity 1s ease-in-out;
+}
+
+
+
         #nextBtn {
             font-size: 24px;
             padding: 12px 24px;
@@ -195,6 +208,8 @@
         <button id="nextBtn" onclick="openCard()">Next</button>
     </div>
 
+    <div id="headerMessage">To My Jiaxin</div>
+
     <div id="container">
         <p id="valentineMessage">Dear Jiaxin,
 
@@ -306,20 +321,24 @@
         }
 
         function openCard() {
-            document.getElementById("initialPage").style.opacity = "0"; // Fade out the initial page
+    document.getElementById("headerMessage").style.opacity = "0"; // Fade out message
+    setTimeout(() => {
+        document.getElementById("headerMessage").style.display = "none"; // Hide it completely
+        document.getElementById("initialPage").style.opacity = "0"; // Fade out the initial page
+        setTimeout(() => {
+            document.getElementById("initialPage").style.display = "none";
+            document.getElementById("container").style.display = "block"; // Show the main container
+            playBackgroundMusic();
             setTimeout(() => {
-                document.getElementById("initialPage").style.display = "none";
-                document.getElementById("container").style.display = "block"; // Show the main container
-                playBackgroundMusic();
+                document.getElementById("valentineMessage").style.opacity = "1";
                 setTimeout(() => {
-                    document.getElementById("valentineMessage").style.opacity = "1";
-                    setTimeout(() => {
-                        document.getElementById("yesNoButtons").style.display = "block";
-                    }, 2000);
-                }, 500);
-            }, 1000);
-        }
+                    document.getElementById("yesNoButtons").style.display = "block";
+                }, 2000);
+            }, 500);
+        }, 1000);
+    }, 500);
+}
+
     </script>
 </body>
 </html>
-
