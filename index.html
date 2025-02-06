@@ -26,15 +26,26 @@
         }
 
         @keyframes glow {
-            0% { box-shadow: 0 0 5px red; }
-            50% { box-shadow: 0 0 20px pink; }
-            100% { box-shadow: 0 0 5px red; }
-        }
+    0% { box-shadow: 0 0 5px red; }
+    50% { box-shadow: 0 0 20px pink; }
+    100% { box-shadow: 0 0 5px red; }
+}
 
-        #yesBtn:hover {
-            animation: glow 1s infinite alternate;
-            background-color: #ffcccc;
-        }
+#yesBtn {
+    background: transparent;
+    color: red;
+    border: 2px solid red;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    animation: glow 1s infinite alternate;
+}
+
+#yesBtn:hover {
+    background-color: #32CD32; /* Light Green */
+    color: white;
+    animation: glow 1s infinite alternate; /* Keep the glowing effect */
+}
 
         /* Soft Gradient Background */
         body {
@@ -64,7 +75,7 @@
         }
 
         #initialPage img {
-            width: 500px;
+            width: 350px;
             height: auto;
         }
 
@@ -103,7 +114,7 @@
 
         #container {
             width: 80%;
-            max-width: 800px;
+            max-width: 900px;
             padding: 40px;
             background: rgba(255, 255, 255, 0.6);
             border-radius: 20px;
@@ -118,7 +129,7 @@
             white-space: pre-wrap;
             opacity: 0;
             transition: opacity 2s ease-in-out;
-            max-width: 80%;
+            max-width: 100%;
             margin-left: 20px;
         }
 
@@ -342,3 +353,4 @@
     </script>
 </body>
 </html>
+
